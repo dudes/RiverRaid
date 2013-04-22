@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, BaseActivity!</string>
+    <string name="app_name">Shit happens</string>
+    <string name="title_1">Artur Matusiak\nRafał Żychliński\nMiron Maksymiuk</string>
+    <string name="title_2">Jan Sikora\nJarosław Piotrowski</string>
+    <string name="start">Start</string>
+    <string name="accuracy">koniec</string>
+	<string name="gameover">Game over, you fag!</string>
+	<string name="exit">Are you sure\nyou want to exit?</string>
+	<string name="soundon">Sound on</string>
+	<string name="soundoff">Sound off</string>
+	<string name="gameOverPoints">Your score:</string>
+</resources>
