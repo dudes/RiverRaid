@@ -1,4 +1,3 @@
-//source: https://c0deattack.wordpress.com/2011/01/06/andengine-using-the-object-pool/
 package river.raid.game;
 
 import org.andengine.util.adt.pool.GenericPool;
@@ -30,6 +29,5 @@ public class BulletPool extends GenericPool<Bullet> {
 		b.sprite.clearUpdateHandlers();
 		b.sprite.setVisible(false);
 		b.sprite.detachSelf();
-		Log.v("Jimvaders", "BulletPool onHandleRecycleItem()");
 	}
 }

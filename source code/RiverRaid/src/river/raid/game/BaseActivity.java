@@ -25,6 +25,12 @@ import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 
+
+
+/*
+	Główna aktywość gry
+	
+*/
 public class BaseActivity extends SimpleBaseGameActivity {
 
 	static final int CAMERA_WIDTH = 800;
@@ -55,7 +61,6 @@ public class BaseActivity extends SimpleBaseGameActivity {
 
 	private static int SPR_COLUMN_BUTTONS = 4;
 	private static int SPR_ROWS_BUTTONS = 2;
-	// A reference to the current scene
 	public Scene mCurrentScene;
 	public static BaseActivity instance;
 
@@ -74,6 +79,10 @@ public class BaseActivity extends SimpleBaseGameActivity {
 		return engOpt;
 	}
 
+
+	/*
+		Metoda wczytuje tekstury i pliki muzyczne do późniejszego uzycia
+	*/
 	@Override
 	protected void onCreateResources() {
 		mFont = FontFactory.create(this.getFontManager(), this.getTextureManager(), 256, 256, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), 32);
@@ -186,10 +195,10 @@ public class BaseActivity extends SimpleBaseGameActivity {
 			this.menuMusic = MusicFactory.createMusicFromAsset(this.getMusicManager(), this, "music/menu.mp3");
 			this.menuMusic.setLooping(true);
 		} catch (final IOException e) {
-			Log.d("Errorsssssssssssssssssssssssssssssssssssssss", e + "");
 		}
 
 	}
+
 
 	@Override
 	protected Scene onCreateScene() {
@@ -198,7 +207,6 @@ public class BaseActivity extends SimpleBaseGameActivity {
 		return mCurrentScene;
 	}
 
-	// to change the current main scene
 	public void setCurrentScene(Scene scene) {
 		mCurrentScene = null;
 		mCurrentScene = scene;
@@ -206,9 +214,11 @@ public class BaseActivity extends SimpleBaseGameActivity {
 
 	}
 
+	/*
+		Obsługa przycisku wstecz
+	*/
 	@Override
 	public void onBackPressed() {
-		Log.v("Jimvaders", "BaseActivity BackPressed " + mCurrentScene.toString());
 		if (mCurrentScene instanceof GameScene)
 			// ((GameScene) mCurrentScene).detach();
 			if (this.mEngine.isRunning()) {
@@ -222,12 +232,9 @@ public class BaseActivity extends SimpleBaseGameActivity {
 			}
 		else if (mCurrentScene instanceof MainMenuScene) {
 			((MainMenuScene) mCurrentScene).setPopup();
-			Log.d("dddddddddddddddddddddddddd", "plok");
 		}
 
-		// mCurrentScene = null;
-		// SensorListener.instance = null;
-		// super.onBackPressed();
+
 	}
 	@Override
 	public void onPause() {
@@ -236,18 +243,6 @@ public class BaseActivity extends SimpleBaseGameActivity {
 		}
 		super.onPause();
 	}
-	// public boolean onTouchEvent(MotionEvent event) {
-	// int myEventAction = event.getAction();
-	//
-	// float X = event.getX();
-	// float Y = event.getY();
-	//
-	// // switch (myEventAction) {
-	// // case MotionEvent.ACTION_DOWN:
-	// //mEngine.start();
-	// Log.d("ddd", "dddddddddddddddddddddddddddddddf");
-	// // break;
-	// //}
-	// return true;
-	// }
+	
+	
 }

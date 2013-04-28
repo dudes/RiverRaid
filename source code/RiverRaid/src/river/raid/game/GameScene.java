@@ -158,7 +158,6 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 	}
 
 	public void detach() {
-		Log.v("Jimvaders", "GameScene onDetached()");
 		clearUpdateHandlers();
 		for (Bullet b : bulletList) {
 			BulletPool.sharedBulletPool().recyclePoolItem(b);
@@ -172,7 +171,6 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 	}
 
 	public void cleaner() {
-		Log.d("ddddd,", "cliner");
 		synchronized (this) {
 			// setChildScene(new BarScene(mCamera));
 			// if all Enemies are killed
@@ -182,12 +180,7 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 				CoinPool.sharedBulletPool().recyclePoolItem(coin);
 				//detachChild(coin.sprite);
 			}
-//			for (int g = 0; g < coinToRemove.size(); ++g) {
-//				CoinPool.sharedBulletPool().recyclePoolItem(coinToRemove.get(g));
-//				coinToRemove.remove(g);
-//				//CoinPool.sharedBulletPool().recyclePoolItem(coin);
-//				//detachChild(coin.sprite);
-//			}
+
 			barhud.setHP(ship.hp);
 			barhud.setPoints(missCount);
 			if (ship.hp == 0)
@@ -201,7 +194,6 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 			if(missCount >= 2000 && missCount <= 2200)
 				enemySpawnTime = 1;
 			if (EnemyLayer.isEmpty()) {
-				Log.v("Jimvaders", "GameScene Cleaner() cleared");
 
 				clearUpdateHandlers();
 			}
@@ -219,7 +211,6 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 								@Override
 								public void onAnimationStarted(AnimatedSprite pAnimatedSprite, int pInitialLoopCount) {
 									// TODO Auto-generated method stub
-									Log.d("ppppppppppppppppppppppppp", "start    " + p);
 
 									// scene.packageList.add(b);
 								}
@@ -240,28 +231,7 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 								public void onAnimationFinished(AnimatedSprite pAnimatedSprite) {
 
 									packageToRemove.add(p);
-//									time = TimePool.sharedBulletPool().obtainPoolItem();
-//									time.sprite.setPosition(p.sprite.getX() + p.sprite.getWidth() / 2, p.sprite.getY());
-//									time.sprite.setCurrentTileIndex(0);
-//									time.sprite.setVisible(true);
-//									time.sprite.detachSelf();
-//									MoveModifier modtimer = new MoveModifier(0.4f, p.sprite.getX() + p.sprite.getWidth() / 2, ship.sprite.getX(), p.sprite.getY(), ship.sprite.getY()
-//											- ship.sprite.getHeight() / 4) {
-//
-//										@Override
-//										protected void onModifierFinished(IEntity pItem) {
-//											// TODO Auto-generated method stub
-//											super.onModifierFinished(pItem);
-//											ship.hp++;
-//										//	TimePool.sharedBulletPool().recyclePoolItem(time);
-//											//detachChild(time.sprite);
-//										}
-//
-//									};
-//									time.sprite.registerEntityModifier(modtimer);
-//									attachChild(time.sprite);
 									int whatCoin = randCoin.nextInt(3);
-							//		final Coin c = coinIterator.next();
 									coin = CoinPool.sharedBulletPool().obtainPoolItem();
 									if(whatCoin == 0){
 										coin.sprite.setCurrentTileIndex(4);
@@ -276,7 +246,6 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 										addMoney = 30;
 									}
 									coin.sprite.setPosition(p.sprite.getX() + p.sprite.getWidth() / 2, p.sprite.getY());
-								//	coin.sprite.setCurrentTileIndex(0);
 									coin.sprite.setVisible(true);
 									coin.sprite.detachSelf();
 									MoveModifier mod = new MoveModifier(0.4f, p.sprite.getX() + p.sprite.getWidth() / 2, ship.sprite.getX(), p.sprite.getY(), ship.sprite.getY()

@@ -13,12 +13,10 @@ import org.andengine.input.touch.TouchEvent;
 
 import android.util.Log;
 
-import pl2.lines.shit.happnes.R;
 
-/**
- * @author Nicolas Gramlich
- * @since 16:36:51 - 03.08.2010
- */
+/*
+ Scena gry - wstrzymanie aplikacji
+*/
 public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 
 	boolean done;
@@ -33,13 +31,7 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 		activity = BaseActivity.getSharedInstance();
 		setBackgroundEnabled(false);
 
-		// ParallaxBackground background = new ParallaxBackground(0, 0, 0);
-		// background.attachParallaxEntity(new ParallaxEntity(0, new Sprite(0,
-		// 0, activity.regPopup, activity.getVertexBufferObjectManager())));
-		// // setBackground(new Background(0.09804f, 0.6274f, 0.8784f));
-		//
-		// setBackground(background);
-		// GameScene scene = (GameScene) activity.mCurrentScene;
+	
 		
 		window = new Sprite(0, 0, activity.regPopup, activity.getVertexBufferObjectManager());
 		height = mCamera.getHeight();
@@ -48,7 +40,6 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 		Sprite yesbutton = new Sprite(0, 0, activity.regYesButton, activity.getVertexBufferObjectManager()) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-				Log.d("fffff", "ddddddddddddddddddddddddd");
 				
 
 	            switch(pSceneTouchEvent.getAction()) {
@@ -65,7 +56,6 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 		Sprite nobutton = new Sprite(0, 0, activity.regNoButton, activity.getVertexBufferObjectManager()) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
-				Log.d("ddddd", "ddddddddddddddddddddddddd");
 				closePopup(window,height);
 				return true;
 			}
@@ -87,7 +77,6 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 				done = true;
 				shown = true;
 				activity.getEngine().stop();
-				Log.d("stoooooooop", "sssssssssssssssss");
 				
 			}
 		};
@@ -102,10 +91,7 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 
 	@Override
 	public boolean onSceneTouchEvent(Scene arg0, TouchEvent arg1) {
-//		if (!done)
-//			return true;
-		Log.d("dddddddddda","dasdasdafqwrqwff");
-		// ((GameScene) activity.mCurrentScene).resetValues();
+
 		return false;
 	}
 

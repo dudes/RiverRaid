@@ -18,12 +18,12 @@ import org.andengine.input.touch.TouchEvent;
 
 import android.util.Log;
 
-import pl2.lines.shit.happnes.R;
 
-/**
- * @author Nicolas Gramlich
- * @since 16:36:51 - 03.08.2010
- */
+
+
+/*
+	Scena gry po utraceniu dostępych żyć
+*/
 public class GameOverScene extends MenuScene implements IOnSceneTouchListener {
 
 	boolean done;
@@ -37,13 +37,7 @@ public class GameOverScene extends MenuScene implements IOnSceneTouchListener {
 		activity = BaseActivity.getSharedInstance();
 		setBackgroundEnabled(false);
 		collectedPoints = points;
-		// ParallaxBackground background = new ParallaxBackground(0, 0, 0);
-		// background.attachParallaxEntity(new ParallaxEntity(0, new Sprite(0,
-		// 0, activity.regPopup, activity.getVertexBufferObjectManager())));
-		// // setBackground(new Background(0.09804f, 0.6274f, 0.8784f));
-		//
-		// setBackground(background);
-		// GameScene scene = (GameScene) activity.mCurrentScene;
+		
 		
 		window = new Sprite(0, 0, activity.regGamePopup, activity.getVertexBufferObjectManager());
 		height = mCamera.getHeight();
@@ -96,7 +90,6 @@ public class GameOverScene extends MenuScene implements IOnSceneTouchListener {
 		};
 		attachChild(window);
 		window.registerEntityModifier(mod);
-	//	setOnSceneTouchListener(this);
 		registerTouchArea(menubutton);
 		registerTouchArea(submitbutton);
 		registerTouchArea(againbutton);
@@ -113,7 +106,6 @@ public class GameOverScene extends MenuScene implements IOnSceneTouchListener {
 	}
 
 	private void closePopup(Sprite popup, float y){
-	//	closeMenuScene();
 		MoveYModifier mod = new MoveYModifier(0.5f, popup.getY(),y+popup.getY()) {
 			@Override
 			protected void onModifierFinished(IEntity pItem) {

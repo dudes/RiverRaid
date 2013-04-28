@@ -9,8 +9,11 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 
-import pl2.lines.shit.happnes.R;
 
+
+/*
+
+*/
 public class ResultScene extends CameraScene implements IOnSceneTouchListener {
 
 	boolean done;

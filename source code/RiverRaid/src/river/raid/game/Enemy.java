@@ -10,10 +10,12 @@ import org.andengine.opengl.texture.region.TiledTextureRegion;
 
 import android.util.Log;
 
+/*
+ Klasa przeciwnika
+*/
+
 public class Enemy {
-//	public Rectangle sprite;
 	public int hp;
-	// the max health for each enemy
 	protected final int MAX_HEALTH = 2;
 
 	
@@ -21,10 +23,6 @@ public class Enemy {
 
 	public BitmapTextureAtlas mBitmapTextureAtlas;
 	public TextureRegion mTextureRegion;
-//	private static int SPR_COLUMN = 3;
-//	private static int SPR_ROWS = 4;
-//	private BitmapTextureAtlas texBanana;
-//	private TiledTextureRegion regBanana;
 	public AnimatedSprite sprite;
 	public int direction;
 	
@@ -52,8 +50,9 @@ public class Enemy {
 		sprite.clearUpdateHandlers();
 	}
 
-	// method for applying hit and checking if enemy died or not
-	// returns false if enemy died
+	/*
+		Sprawdzenie czy przeciwnik jest żywy
+	*/
 	public boolean gotHit() {
 		synchronized (this) {
 			hp--;

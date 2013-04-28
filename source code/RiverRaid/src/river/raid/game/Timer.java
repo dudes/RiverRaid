@@ -3,6 +3,9 @@ package river.raid.game;
 import org.andengine.engine.handler.IUpdateHandler;
 
 
+/*
+	Klasa timera obsługująca respawn przeciwników
+*/
 /**
  * @author Jong
  *

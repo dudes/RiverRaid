@@ -5,6 +5,10 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.sprite.TiledSprite;
 import org.andengine.entity.text.Text;
 
+
+/*
+	Scena z liczbą żyć i punktów zdobytych przez gracza
+*/
 public class BarScene extends HUD {
 
 	boolean done;
@@ -30,6 +34,12 @@ public class BarScene extends HUD {
 		tpoints.setText(points+"");
 		tpoints.setPosition(activity.mCamera.getWidth()-pauseButton.getWidth()-20-tpoints.getWidth(), lives.getHeight()/4);
 	}
+	
+	/*
+	Konstruktor
+	Nadawanie domyślych wartości
+	Ustalanie pozycji na ekranie
+	*/
 	public BarScene() {
 		super();
 		activity = BaseActivity.getSharedInstance();

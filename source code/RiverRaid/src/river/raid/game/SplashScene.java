@@ -10,8 +10,12 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.util.modifier.IModifier;
 
-import pl2.lines.shit.happnes.R;
 
+
+
+/*
+	Pierwsza scena gry - intro
+*/
 public class SplashScene extends Scene {
 	BaseActivity activity;
 	Sprite logo2lines;

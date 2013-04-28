@@ -1,4 +1,3 @@
-//source: https://c0deattack.wordpress.com/2011/01/06/andengine-using-the-object-pool/
 package river.raid.game;
 
 import org.andengine.util.adt.pool.GenericPool;
@@ -35,6 +34,5 @@ public class EnemyPool extends GenericPool<Enemy> {
 		e.sprite.setVisible(false);
 		e.sprite.detachSelf();
 		e.clean();
-		Log.v("Jimvaders", "EnemyPool onHandleRecycleItem()");
 	}
 }

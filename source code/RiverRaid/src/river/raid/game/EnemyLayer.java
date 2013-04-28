@@ -59,7 +59,6 @@ public class EnemyLayer extends Entity {
 	}
 
 	public void restart() {
-		Log.v("jimvaders", "EnemyLayer restarted");
 		enemies.clear();
 		clearEntityModifiers();
 		clearUpdateHandlers();
@@ -73,7 +72,6 @@ public class EnemyLayer extends Entity {
 
 			Random r = new Random();
 			if (r.nextInt(1) == 0) {
-				Log.d("dd", 0 + "");
 				finalPosX = 900;
 				e.direction = 0;
 				e.sprite.setPosition(-e.sprite.getWidth() * 3, (r.nextInt(3) + 1) * e.sprite.getHeight());
@@ -84,8 +82,6 @@ public class EnemyLayer extends Entity {
 			}
 			
 			e.sprite.setVisible(true);
-
-			// shoot(200,e.sprite.getY());
 			attachChild(e.sprite);
 			e.sprite.registerEntityModifier(new MoveModifier(3, e.sprite.getX(), finalPosX, e.sprite.getY(), finalPosY, moveXListener));
 
@@ -93,15 +89,6 @@ public class EnemyLayer extends Entity {
 
 		}
 		setVisible(true);
-		// setPosition(50, 30);
-
-		// MoveXModifier movRight = new MoveXModifier(1, 5, 10);
-		// MoveXModifier movLeft = new MoveXModifier(1, 120, 50);
-		// MoveYModifier moveDown = new MoveYModifier(1, 30, 100);
-		// MoveYModifier moveUp = new MoveYModifier(1, 100, 30);
-		//
-		// registerEntityModifier(new LoopEntityModifier(
-		// new SequenceEntityModifier(movRight, moveDown, movLeft, moveUp)));
 
 	}
 
@@ -117,7 +104,6 @@ public class EnemyLayer extends Entity {
 		Random r = new Random();
 		int l = r.nextInt(2);
 		if (l == 0) {
-			Log.d("dd", 0 + "");
 			finalPosX = 900;
 			e.direction = 0;
 			
@@ -128,9 +114,7 @@ public class EnemyLayer extends Entity {
 			e.sprite.setPosition(BaseActivity.CAMERA_WIDTH + e.sprite.getWidth() * 3, (r.nextInt(3) + 1) * e.sprite.getHeight());
 		}
 		e.sprite.setVisible(true);
-	
-		// shoot(200,e.sprite.getY());
-		
+			
 		attachChild(e.sprite);
 		moveXListener = new IEntityModifierListener() {
 			@Override
@@ -139,34 +123,18 @@ public class EnemyLayer extends Entity {
 			}
 			@Override
 			public void onModifierFinished(IModifier<IEntity> pModifier, IEntity pItem) {
-			//	if (getSize() > 1)
-//					detachSelf();
-			//	e.sprite.detachChildren();
-			//	EnemyPool.sharedEnemyPool().recyclePoolItem(e);
-				Log.d("eeeee","ddddw oad ");
+
 			}
 		};
 		e.sprite.registerEntityModifier(new MoveModifier(3, e.sprite.getX(), finalPosX, e.sprite.getY(), finalPosY, moveXListener));
 		createSpriteShootTimeHandler(e.sprite);
 
-		// enemies.add(e);
-
-		// setVisible(true);
 		if (enemies.size() > 3)
 			for (int j = 0; j < enemies.size() - 3; j++) {
 				enemies.remove(j);
 
 			}
 
-		// setPosition(50, 30);
-
-		// MoveXModifier movRight = new MoveXModifier(1, 5, 10);
-		// MoveXModifier movLeft = new MoveXModifier(1, 120, 50);
-		// MoveYModifier moveDown = new MoveYModifier(1, 30, 100);
-		// MoveYModifier moveUp = new MoveYModifier(1, 100, 30);
-		//
-		// registerEntityModifier(new LoopEntityModifier(
-		// new SequenceEntityModifier(movRight, moveDown, movLeft, moveUp)));
 
 	}
 	private void createSpriteShootTimeHandler(final AnimatedSprite as) {
@@ -187,7 +155,6 @@ public class EnemyLayer extends Entity {
 		BaseActivity.getSharedInstance().getEngine().registerUpdateHandler(spriteTimerHandler);
 	}
 	public static void purgeAndRestart() {
-		Log.v("Jimvaders", "EnemyLayer PurgeAndRestart()");
 		instance.purge();
 		instance.restart();
 	}
@@ -204,7 +171,6 @@ public class EnemyLayer extends Entity {
 		GameScene scene = (GameScene) BaseActivity.getSharedInstance().mCurrentScene;
 
 		Bullet b = BulletPool.sharedBulletPool().obtainPoolItem();
-		Log.d("dwwwwwwwwwwwwwwwwwwwwwwwwww", x + "");
 		b.sprite.setPosition(x, y);
 		MoveYModifier mod = new MoveYModifier(1f, y, 460);
 

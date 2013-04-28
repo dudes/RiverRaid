@@ -17,7 +17,10 @@ import org.andengine.entity.sprite.Sprite;
 
 import android.view.KeyEvent;
 
-//placeHolder scene class for the main menu, currently only includes a start menu item 
+
+/*
+	Scena gry z menu
+*/
 public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener {
 	BaseActivity activity;
 	final int MENU_START = 0;
@@ -83,30 +86,7 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
 		particleSystem.addParticleModifier(new AlphaParticleModifier<Sprite>(1.0f, 0.0f, 2.5f, 6.5f));
 		particleSystem.addParticleModifier(new ColorParticleModifier<Sprite>(1.0f, 10.0f, 0.0f, 0.0f, 102.0f, 102.0f, 0.f, 0f));
 		particleSystem.addParticleModifier(new ScaleParticleModifier<Sprite>(0.5f, 2.0f, 0, 2));
-		// particleSystem.addParticleModifier(new
-		// RotationParticleModifier<Rectangle>(0, mTimePart, 0, 360));
-		// s.attachChild(particleSystem);
-		// final ParticleSystem<Rectangle> particleSystem = new
-		// ParticleSystem<Rectangle>(new PointParticleEmitter(-32, CAMERA_HEIGHT
-		// - 32), RATE_MIN, RATE_MAX, PARTICLES_MAX, activity.regSmoke);
-		// particleSystem.setBlendFunction(GL10.GL_SRC_ALPHA, GL10.GL_ONE);
-		//
-		// particleSystem.addParticleInitializer(new VelocityInitializer(35, 45,
-		// 0, -10));
-		// particleSystem.addParticleInitializer(new AccelerationInitializer(5,
-		// -11));
-		// particleSystem.addParticleInitializer(new RotationInitializer(0.0f,
-		// 360.0f));
-		// particleSystem.addParticleInitializer(new ColorInitializer(1.0f,
-		// 1.0f, 0.0f));
-		//
-		// particleSystem.addParticleModifier(new ScaleModifier(0.5f, 2.0f, 0,
-		// 5));
-		// particleSystem.addParticleModifier(new ExpireModifier(6.5f));
-		// particleSystem.addParticleModifier(new ColorModifier(1.0f, 1.0f,
-		// 1.0f, 1.0f, 0.0f, 1.0f, 2.5f, 5.5f));
-		// particleSystem.addParticleModifier(new AlphaModifier(1.0f, 0.0f,
-		// 2.5f, 6.5f));
+		
 
 		s.attachChild(particleSystem);
 
