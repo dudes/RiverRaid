@@ -3,7 +3,6 @@ package river.raid.game;
 import org.andengine.entity.sprite.TiledSprite;
 import org.andengine.entity.text.Text;
 
-
 	/*
 		Klasa pocisku
 	*/

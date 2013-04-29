@@ -17,10 +17,7 @@ import android.util.Log;
 public class Enemy {
 	public int hp;
 	protected final int MAX_HEALTH = 2;
-
-	
 	private BaseActivity activity;
-
 	public BitmapTextureAtlas mBitmapTextureAtlas;
 	public TextureRegion mTextureRegion;
 	public AnimatedSprite sprite;

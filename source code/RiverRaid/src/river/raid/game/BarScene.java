@@ -5,7 +5,6 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.sprite.TiledSprite;
 import org.andengine.entity.text.Text;
 
-
 /*
 	Scena z liczbą żyć i punktów zdobytych przez gracza
 */
