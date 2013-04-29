@@ -37,11 +37,17 @@ public class Enemy {
 	}
 
 
+	/*
+	 Ustawianie zycia przeciwnikowi podczas jego tworzenia
+	*/
 	public void init() {
 		hp = MAX_HEALTH;
 
 	}
 
+	/*
+		Czyszczenie ekranu z widocznych przeciwnikow
+	*/
 	public void clean() {
 		sprite.clearEntityModifiers();
 		sprite.clearUpdateHandlers();

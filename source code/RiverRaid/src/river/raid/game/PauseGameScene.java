@@ -95,6 +95,10 @@ public class PauseGameScene extends MenuScene implements IOnSceneTouchListener {
 		return false;
 	}
 
+
+	/*
+		Zamkniecie popup - animacja chowania okna
+	*/
 	private void closePopup(Sprite popup, float y){
 	//	closeMenuScene();
 		MoveYModifier mod = new MoveYModifier(0.5f, popup.getY(),y+popup.getY()) {

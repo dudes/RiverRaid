@@ -4,6 +4,9 @@ import org.andengine.util.adt.pool.GenericPool;
 
 import android.util.Log;
 
+/*
+	Zbior pociskow widocznych na ekranie
+*/
 public class BulletPool extends GenericPool<Bullet> {
 
 	public static BulletPool instance;

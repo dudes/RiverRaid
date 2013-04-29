@@ -20,6 +20,10 @@ public class BarScene extends HUD {
 	public int getHP() {
 		return HP;
 	}
+	
+	/*
+		Ustawianie stanu zycia gracza
+	*/
 	public void setHP(int hP) {
 		HP = hP;
 		result.setText(hP+"");
@@ -28,6 +32,9 @@ public class BarScene extends HUD {
 	public int getPoints() {
 		return points;
 	}
+	/*
+		Ustawianie i wyswietlanie poziomu punktow zebranych przez uzytkownika
+	*/
 	public void setPoints(int points) {
 		this.points = points;
 		tpoints.setText(points+"");

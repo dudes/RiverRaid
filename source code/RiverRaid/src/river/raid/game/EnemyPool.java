@@ -4,6 +4,10 @@ import org.andengine.util.adt.pool.GenericPool;
 
 import android.util.Log;
 
+
+/*
+	Zbior przeciwnikow widocznych na ekranie
+*/
 public class EnemyPool extends GenericPool<Enemy> {
 
 	public static EnemyPool instance;

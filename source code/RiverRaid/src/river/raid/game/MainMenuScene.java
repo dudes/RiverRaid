@@ -94,6 +94,10 @@ public class MainMenuScene extends MenuScene implements IOnMenuItemClickListener
 
 	}
 
+
+	/*
+		Obsługa klikniec w menu
+	*/
 	@Override
 	public boolean onMenuItemClicked(MenuScene arg0, IMenuItem arg1, float arg2, float arg3) {
 		switch (arg1.getID()) {

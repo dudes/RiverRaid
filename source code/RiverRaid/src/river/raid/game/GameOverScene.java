@@ -105,6 +105,9 @@ public class GameOverScene extends MenuScene implements IOnSceneTouchListener {
 		return false;
 	}
 
+	/*
+		Animacja chowania popup po czym jego zamkniecie
+	*/
 	private void closePopup(Sprite popup, float y){
 		MoveYModifier mod = new MoveYModifier(0.5f, popup.getY(),y+popup.getY()) {
 			@Override

@@ -92,6 +92,11 @@ public class EnemyLayer extends Entity {
 
 	}
 
+	/*
+		Dodawanie nowego przeciwnika
+		Losowanie mu jego poczatkowej pozycji
+		Okreslenie w jakim kierunku ma sie od przemieszczac
+	*/
 	public void addEnemy() {
 	
 		

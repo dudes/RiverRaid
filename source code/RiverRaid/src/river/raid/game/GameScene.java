@@ -304,6 +304,10 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 		}
 	}
 
+
+	/*
+		Animacja gracza - zamiana tekstury na wrak samolotu - po utraceniu dostepnych zyc
+	*/
 	private void createExplosion(final float posX, final float posY, final IEntity target, final SimpleBaseGameActivity activity) {
 
 		int mNumPart = 90;
