@@ -4,10 +4,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
-
-/*
-	Klasa nasłuchująca akceloleptr - położenie telefonu 
-*/
 public class SensorListener implements SensorEventListener {
 
 	static SensorListener instance;
@@ -34,7 +30,8 @@ public class SensorListener implements SensorEventListener {
 		synchronized (this) {
 			switch (event.sensor.getType()) {
 			case Sensor.TYPE_ACCELEROMETER:
-				
+				// Log.v("Jimvaders",
+				// "SensorListener onSensorChanged() accelerometerSpeedX = "+event.values[1]);
 				scene.accelerometerSpeedX = event.values[1];
 				break;
 			default:

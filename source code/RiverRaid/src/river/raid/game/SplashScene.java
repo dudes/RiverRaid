@@ -10,12 +10,8 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.util.modifier.IModifier;
 
+import pl2.lines.shit.happnes.R;
 
-
-
-/*
-	Pierwsza scena gry - intro
-*/
 public class SplashScene extends Scene {
 	BaseActivity activity;
 	Sprite logo2lines;
@@ -23,8 +19,8 @@ public class SplashScene extends Scene {
 	public SplashScene() {
 		setBackground(new Background(255, 255, 255));
 		activity = BaseActivity.getSharedInstance();
-		title1 = new Text(0, 0, activity.splashFont, activity.getString(R.string.title_1), activity.getVertexBufferObjectManager());
-		title2 = new Text(0, 0, activity.splashFont, activity.getString(R.string.title_2), activity.getVertexBufferObjectManager());
+		title1 = new Text(0, 0, FontRes.getInstance().splashFont, activity.getString(R.string.title_1), activity.getVertexBufferObjectManager());
+		title2 = new Text(0, 0, FontRes.getInstance().splashFont, activity.getString(R.string.title_2), activity.getVertexBufferObjectManager());
 
 		title1.setPosition(activity.mCamera.getWidth(), activity.mCamera.getHeight() / 2 - title1.getHeight() / 2);
 		title2.setPosition(activity.mCamera.getWidth(), activity.mCamera.getHeight() / 2 - title1.getHeight() / 2);

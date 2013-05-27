@@ -45,8 +45,8 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 	public float accelerometerSpeedX;
 	SensorManager sensorManager;
 	public LinkedList<Bullet> bulletList;
-	public LinkedList<Package> packageList;
-	public LinkedList<Coin> coinList;
+	//public LinkedList<Package> packageList;
+//	public LinkedList<Coin> coinList;
 	private ArrayList<Package> packageToRemove;
 	private ArrayList<Coin> coinToRemove;
 	public int bulletCount;
@@ -97,8 +97,8 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 		mCamera.setHUD(hud);
 
 		bulletList = new LinkedList<Bullet>();
-		packageList = new LinkedList<Package>();
-		coinList = new LinkedList<Coin>();
+	//	packageList = new LinkedList<Package>();
+	//	coinList = new LinkedList<Coin>();
 		packageToRemove = new ArrayList<Package>();
 		coinToRemove = new ArrayList<Coin>();
 		attachChild(ship.sprite);
@@ -158,6 +158,7 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 	}
 
 	public void detach() {
+		Log.v("Jimvaders", "GameScene onDetached()");
 		clearUpdateHandlers();
 		for (Bullet b : bulletList) {
 			BulletPool.sharedBulletPool().recyclePoolItem(b);
@@ -171,6 +172,7 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 	}
 
 	public void cleaner() {
+		Log.d("ddddd,", "cliner");
 		synchronized (this) {
 			// setChildScene(new BarScene(mCamera));
 			// if all Enemies are killed
@@ -180,7 +182,12 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 				CoinPool.sharedBulletPool().recyclePoolItem(coin);
 				//detachChild(coin.sprite);
 			}
-
+//			for (int g = 0; g < coinToRemove.size(); ++g) {
+//				CoinPool.sharedBulletPool().recyclePoolItem(coinToRemove.get(g));
+//				coinToRemove.remove(g);
+//				//CoinPool.sharedBulletPool().recyclePoolItem(coin);
+//				//detachChild(coin.sprite);
+//			}
 			barhud.setHP(ship.hp);
 			barhud.setPoints(missCount);
 			if (ship.hp == 0)
@@ -194,120 +201,140 @@ public class GameScene extends Scene implements IOnSceneTouchListener {
 			if(missCount >= 2000 && missCount <= 2200)
 				enemySpawnTime = 1;
 			if (EnemyLayer.isEmpty()) {
+				Log.v("Jimvaders", "GameScene Cleaner() cleared");
 
 				clearUpdateHandlers();
 			}
-			Iterator<Enemy> eIt = EnemyLayer.getIterator();
-		//	final Iterator<Coin> coinIterator = coinList.iterator();
-			final Iterator<Package> packageIterator = packageList.iterator();
-			while (packageIterator.hasNext()) {
-				final Package p = packageIterator.next();
-				
-				if (p.sprite.getY() >= 460 - p.sprite.getWidth() / 3) {
-					if (p.sprite.collidesWith(ship.sprite)) {
+//			Iterator<Enemy> eIt = EnemyLayer.getIterator();
+//		//	final Iterator<Coin> coinIterator = coinList.iterator();
+//			//final Iterator<Package> packageIterator = packageList.iterator();
+//			while (packageIterator.hasNext()) {
+//				final Package p = packageIterator.next();
+//				
+//				if (p.sprite.getY() >= 460 - p.sprite.getWidth() / 3) {
+//					if (p.sprite.collidesWith(ship.sprite)) {
+//
+//						if (!p.sprite.isAnimationRunning()) {
+//							p.sprite.animate(150, false, new IAnimationListener() {
+//								@Override
+//								public void onAnimationStarted(AnimatedSprite pAnimatedSprite, int pInitialLoopCount) {
+//									// TODO Auto-generated method stub
+//									Log.d("ppppppppppppppppppppppppp", "start    " + p);
+//
+//									// scene.packageList.add(b);
+//								}
+//
+//								@Override
+//								public void onAnimationFrameChanged(AnimatedSprite pAnimatedSprite, int pOldFrameIndex, int pNewFrameIndex) {
+//									// TODO Auto-generated method stub
+//
+//								}
+//
+//								@Override
+//								public void onAnimationLoopFinished(AnimatedSprite pAnimatedSprite, int pRemainingLoopCount, int pInitialLoopCount) {
+//									// TODO Auto-generated method stub
+//
+//								}
+//
+//								@Override
+//								public void onAnimationFinished(AnimatedSprite pAnimatedSprite) {
 
-						if (!p.sprite.isAnimationRunning()) {
-							p.sprite.animate(150, false, new IAnimationListener() {
-								@Override
-								public void onAnimationStarted(AnimatedSprite pAnimatedSprite, int pInitialLoopCount) {
-									// TODO Auto-generated method stub
-
-									// scene.packageList.add(b);
-								}
-
-								@Override
-								public void onAnimationFrameChanged(AnimatedSprite pAnimatedSprite, int pOldFrameIndex, int pNewFrameIndex) {
-									// TODO Auto-generated method stub
-
-								}
-
-								@Override
-								public void onAnimationLoopFinished(AnimatedSprite pAnimatedSprite, int pRemainingLoopCount, int pInitialLoopCount) {
-									// TODO Auto-generated method stub
-
-								}
-
-								@Override
-								public void onAnimationFinished(AnimatedSprite pAnimatedSprite) {
-
-									packageToRemove.add(p);
-									int whatCoin = randCoin.nextInt(3);
-									coin = CoinPool.sharedBulletPool().obtainPoolItem();
-									if(whatCoin == 0){
-										coin.sprite.setCurrentTileIndex(4);
-										addMoney = 10;
-									}
-									else if(whatCoin == 1){
-										coin.sprite.setCurrentTileIndex(5);
-										addMoney = 20;
-									}
-									else if(whatCoin == 3){
-										coin.sprite.setCurrentTileIndex(6);
-										addMoney = 30;
-									}
-									coin.sprite.setPosition(p.sprite.getX() + p.sprite.getWidth() / 2, p.sprite.getY());
-									coin.sprite.setVisible(true);
-									coin.sprite.detachSelf();
-									MoveModifier mod = new MoveModifier(0.4f, p.sprite.getX() + p.sprite.getWidth() / 2, ship.sprite.getX(), p.sprite.getY(), ship.sprite.getY()
-											- ship.sprite.getHeight() / 4) {
-
-										@Override
-										protected void onModifierFinished(IEntity pItem) {
-											// TODO Auto-generated method stub
-											super.onModifierFinished(pItem);
-											missCount += addMoney;
-										//	coinToRemove.add(c);
-										}
-
-									};
-									coin.sprite.registerEntityModifier(mod);
-									attachChild(coin.sprite);
-								}
-
-							});
-
-							// }
-						}
-					}
-
-					continue;
-				}
-			}
-			while (eIt.hasNext()) {
-				Enemy e = eIt.next();
-
-				Iterator<Bullet> it = bulletList.iterator();
-
-				while (it.hasNext()) {
-					Bullet b = it.next();
-					if (b.sprite.getY() >= 460) {
-						BulletPool.sharedBulletPool().recyclePoolItem(b);
-						it.remove();
-						missCount++;
-						continue;
-					}
-
-					if (b.sprite.collidesWith(ship.sprite) && ship.hp > 0) {
-
-						if (!ship.gotHit()) {
-							createExplosion(ship.sprite.getX() + ship.sprite.getWidth() / 2, ship.sprite.getY() + ship.sprite.getHeight() / 2, ship.sprite.getParent(),
-									BaseActivity.getSharedInstance());
-							setChildScene(new GameOverScene(mCamera,missCount));
-						}
-						BulletPool.sharedBulletPool().recyclePoolItem(b);
-						it.remove();
-						break;
-					}
-				}
-
-			}
+//									packageToRemove.add(p);
+////									time = TimePool.sharedBulletPool().obtainPoolItem();
+////									time.sprite.setPosition(p.sprite.getX() + p.sprite.getWidth() / 2, p.sprite.getY());
+////									time.sprite.setCurrentTileIndex(0);
+////									time.sprite.setVisible(true);
+////									time.sprite.detachSelf();
+////									MoveModifier modtimer = new MoveModifier(0.4f, p.sprite.getX() + p.sprite.getWidth() / 2, ship.sprite.getX(), p.sprite.getY(), ship.sprite.getY()
+////											- ship.sprite.getHeight() / 4) {
+////
+////										@Override
+////										protected void onModifierFinished(IEntity pItem) {
+////											// TODO Auto-generated method stub
+////											super.onModifierFinished(pItem);
+////											ship.hp++;
+////										//	TimePool.sharedBulletPool().recyclePoolItem(time);
+////											//detachChild(time.sprite);
+////										}
+////
+////									};
+////									time.sprite.registerEntityModifier(modtimer);
+////									attachChild(time.sprite);
+//									int whatCoin = randCoin.nextInt(3);
+//							//		final Coin c = coinIterator.next();
+//									coin = CoinPool.sharedBulletPool().obtainPoolItem();
+//									if(whatCoin == 0){
+//										coin.sprite.setCurrentTileIndex(4);
+//										addMoney = 10;
+//									}
+//									else if(whatCoin == 1){
+//										coin.sprite.setCurrentTileIndex(5);
+//										addMoney = 20;
+//									}
+//									else if(whatCoin == 3){
+//										coin.sprite.setCurrentTileIndex(6);
+//										addMoney = 30;
+//									}
+//									coin.sprite.setPosition(p.sprite.getX() + p.sprite.getWidth() / 2, p.sprite.getY());
+//								//	coin.sprite.setCurrentTileIndex(0);
+//									coin.sprite.setVisible(true);
+//									coin.sprite.detachSelf();
+//									MoveModifier mod = new MoveModifier(0.4f, p.sprite.getX() + p.sprite.getWidth() / 2, ship.sprite.getX(), p.sprite.getY(), ship.sprite.getY()
+//											- ship.sprite.getHeight() / 4) {
+//
+//										@Override
+//										protected void onModifierFinished(IEntity pItem) {
+//											// TODO Auto-generated method stub
+//											super.onModifierFinished(pItem);
+//											missCount += addMoney;
+//										//	coinToRemove.add(c);
+//										}
+//
+//									};
+//									coin.sprite.registerEntityModifier(mod);
+//									attachChild(coin.sprite);
+//								}
+//
+//							});
+//
+//							// }
+//						}
+//					}
+//
+//					continue;
+//				}
+//			}
+//			while (eIt.hasNext()) {
+//				Enemy e = eIt.next();
+//
+//				Iterator<Bullet> it = bulletList.iterator();
+//
+//				while (it.hasNext()) {
+//					Bullet b = it.next();
+//					if (b.sprite.getY() >= 460) {
+//						BulletPool.sharedBulletPool().recyclePoolItem(b);
+//						it.remove();
+//						missCount++;
+//						continue;
+//					}
+//
+//					if (b.sprite.collidesWith(ship.sprite) && ship.hp > 0) {
+//
+//						if (!ship.gotHit()) {
+//							createExplosion(ship.sprite.getX() + ship.sprite.getWidth() / 2, ship.sprite.getY() + ship.sprite.getHeight() / 2, ship.sprite.getParent(),
+//									BaseActivity.getSharedInstance());
+//							setChildScene(new GameOverScene(mCamera,missCount));
+//						}
+//						BulletPool.sharedBulletPool().recyclePoolItem(b);
+//						it.remove();
+//						break;
+//					}
+//				}
+//
+//			}
 		}
 	}
 
-
-	/*
-		Animacja gracza - zamiana tekstury na wrak samolotu - po utraceniu dostepnych zyc
-	*/
 	private void createExplosion(final float posX, final float posY, final IEntity target, final SimpleBaseGameActivity activity) {
 
 		int mNumPart = 90;

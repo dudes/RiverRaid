@@ -18,12 +18,9 @@ import org.andengine.input.touch.TouchEvent;
 
 import android.util.Log;
 
+import pl2.lines.shit.happnes.R;
 
 
-
-/*
-	Wyskakujące okno w menu
-*/
 public class PopupScene extends MenuScene implements IOnSceneTouchListener {
 
 	boolean done;
@@ -36,13 +33,19 @@ public class PopupScene extends MenuScene implements IOnSceneTouchListener {
 		activity = BaseActivity.getSharedInstance();
 		setBackgroundEnabled(false);
 
+		// ParallaxBackground background = new ParallaxBackground(0, 0, 0);
+		// background.attachParallaxEntity(new ParallaxEntity(0, new Sprite(0,
+		// 0, activity.regPopup, activity.getVertexBufferObjectManager())));
+		// // setBackground(new Background(0.09804f, 0.6274f, 0.8784f));
+		//
+		// setBackground(background);
+		// GameScene scene = (GameScene) activity.mCurrentScene;
 		
-		
-		window = new Sprite(0, 0, activity.regPopup, activity.getVertexBufferObjectManager());
+		window = new Sprite(0, 0, TexRes.getInstance().regPopup, activity.getVertexBufferObjectManager());
 		height = mCamera.getHeight();
 		final int x = (int) (mCamera.getWidth() / 2 - window.getWidth() / 2);
 		final int y = (int) (mCamera.getHeight() / 2 - window.getHeight() / 2);
-		Sprite yesbutton = new Sprite(0, 0, activity.regYesButton, activity.getVertexBufferObjectManager()) {
+		Sprite yesbutton = new Sprite(0, 0, TexRes.getInstance().regYesButton, activity.getVertexBufferObjectManager()) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
 				activity.finish();
@@ -50,14 +53,14 @@ public class PopupScene extends MenuScene implements IOnSceneTouchListener {
 			}
 		};
 
-		Sprite nobutton = new Sprite(0, 0, activity.regNoButton, activity.getVertexBufferObjectManager()) {
+		Sprite nobutton = new Sprite(0, 0, TexRes.getInstance().regNoButton, activity.getVertexBufferObjectManager()) {
 			@Override
 			public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
 				closePopup(window,height);
 				return true;
 			}
 		};
-		Text result = new Text(0, 0, activity.popupFont, activity.getString(R.string.exit), BaseActivity.getSharedInstance().getVertexBufferObjectManager());
+		Text result = new Text(0, 0, FontRes.getInstance().popupFont, activity.getString(R.string.exit), BaseActivity.getSharedInstance().getVertexBufferObjectManager());
 
 
 		done = false;
